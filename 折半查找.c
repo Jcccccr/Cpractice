@@ -2,32 +2,28 @@
 #include<windows.h>
 int main()
 {
-	char arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	int key = 7;
+	int arr1[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	int key = 8;
 	int left = 0;
-	int right = sizeof(arr) / sizeof(arr[0]) - 1;
-	int mid = (left + right) / 2;
-	while (left <= right)            //又出现了错用if语句的情况
+	int mid;
+	int right = sizeof(arr1) / sizeof(arr1[0]) - 1;
+	while (left <= right)
 	{
-
-		if (arr[mid] == key)
-		{
-			printf("找到了\n");
-			break;
-		}
-		else if (arr[mid] < key)
+		mid = (left + right) / 2;
+		if (arr1[mid] > key)
 		{
 			right = mid - 1;
 		}
-		else if (arr[mid] > key)
+		else if (arr1[mid] < key)
 		{
 			left = mid + 1;
 		}
-
+		else
+			break;
 	}
-	if (left > right)
-	{
+	if (left <= right)
+		printf("找到了\n");
+	else
 		printf("没找到\n");
-	}
 	return 0;
 }
